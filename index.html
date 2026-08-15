@@ -14,18 +14,21 @@
 
     <div class="layout">
 
-        <!-- MENU LATERAL -->
+        <!-- =========================
+             MENU LATERAL
+        ========================== -->
 
         <aside class="sidebar">
 
             <div class="logo">
-                <div class="logo-icon">S</div>
 
                 <div>
                     <strong>Stock</strong>
                     <span>Master</span>
                 </div>
+
             </div>
+
 
             <nav class="menu" aria-label="Menu principal">
 
@@ -44,54 +47,80 @@
                     Estoque
                 </a>
 
-                <a href="#movimentacoes" class="menu-item">
-                    <span>↕</span>
-                    Movimentações
-                </a>
-
             </nav>
 
+
             <div class="sidebar-footer">
+
                 <span class="status"></span>
+
                 Sistema online
+
             </div>
 
         </aside>
 
 
-        <!-- CONTEÚDO -->
+        <!-- =========================
+             CONTEÚDO PRINCIPAL
+        ========================== -->
 
         <main class="conteudo" id="inicio">
 
-            <!-- TOPO -->
+
+            <!-- CABEÇALHO -->
 
             <header class="topo">
 
                 <div>
-                    <p class="saudacao">Olá, administrador 👋</p>
 
-                    <h1>Controle de estoque</h1>
+                    <p class="saudacao">
+                        Olá, administrador 👋
+                    </p>
+
+                    <h1>
+                        Controle de estoque
+                    </h1>
 
                     <p class="subtitulo">
-                        Gerencie os produtos da sua assistência técnica.
+                        Gerencie os produtos e componentes
+                        da loja.
                     </p>
+
                 </div>
 
+
                 <div class="usuario">
-                    <div class="avatar">AD</div>
+
+                    <div class="avatar">
+                        AD
+                    </div>
 
                     <div>
-                        <strong>Administrador</strong>
-                        <span>Acesso completo</span>
+
+                        <strong>
+                            Administrador
+                        </strong>
+
+                        <span>
+                            Acesso completo
+                        </span>
+
                     </div>
+
                 </div>
 
             </header>
 
 
-            <!-- CARDS -->
+            <!-- =========================
+                 RESUMO DO ESTOQUE
+            ========================== -->
 
-            <section class="resumo" aria-label="Resumo do estoque">
+            <section
+                class="resumo"
+                aria-label="Resumo do estoque"
+            >
 
                 <article class="resumo-card">
 
@@ -100,8 +129,15 @@
                     </div>
 
                     <div>
-                        <span>Total de produtos</span>
-                        <strong>35</strong>
+
+                        <span>
+                            Total de itens
+                        </span>
+
+                        <strong id="totalProdutos">
+                            35
+                        </strong>
+
                     </div>
 
                 </article>
@@ -114,8 +150,15 @@
                     </div>
 
                     <div>
-                        <span>Em estoque</span>
-                        <strong>28</strong>
+
+                        <span>
+                            Disponíveis
+                        </span>
+
+                        <strong id="produtosDisponiveis">
+                            28
+                        </strong>
+
                     </div>
 
                 </article>
@@ -128,8 +171,15 @@
                     </div>
 
                     <div>
-                        <span>Estoque baixo</span>
-                        <strong>5</strong>
+
+                        <span>
+                            Estoque baixo
+                        </span>
+
+                        <strong id="produtosBaixos">
+                            5
+                        </strong>
+
                     </div>
 
                 </article>
@@ -142,8 +192,15 @@
                     </div>
 
                     <div>
-                        <span>Sem estoque</span>
-                        <strong>2</strong>
+
+                        <span>
+                            Sem estoque
+                        </span>
+
+                        <strong id="produtosSemEstoque">
+                            2
+                        </strong>
+
                     </div>
 
                 </article>
@@ -151,20 +208,32 @@
             </section>
 
 
-            <!-- CADASTRO -->
+            <!-- =========================
+                 CADASTRO
+            ========================== -->
 
-            <section id="cadastro" class="painel">
+            <section
+                id="cadastro"
+                class="painel"
+            >
 
                 <div class="painel-header">
 
                     <div>
-                        <span class="tag">CADASTRO</span>
 
-                        <h2>Novo produto</h2>
+                        <span class="tag">
+                            CADASTRO
+                        </span>
+
+                        <h2>
+                            Novo item
+                        </h2>
 
                         <p>
-                            Preencha as informações para cadastrar um novo produto.
+                            Cadastre produtos ou componentes
+                            utilizados pela loja.
                         </p>
+
                     </div>
 
                     <div class="numero-etapa">
@@ -174,16 +243,20 @@
                 </div>
 
 
-                <form id="formProduto" novalidate>
+                <form
+                    id="formProduto"
+                    novalidate
+                >
 
                     <div class="form-grid">
+
 
                         <!-- NOME -->
 
                         <div class="campo campo-grande">
 
                             <label for="nome">
-                                Nome do produto
+                                Nome do produto ou componente *
                             </label>
 
                             <input
@@ -198,54 +271,37 @@
                         </div>
 
 
-                        <!-- SKU -->
-
-                        <div class="campo">
-
-                            <label for="sku">
-                                SKU
-                            </label>
-
-                            <input
-                                type="text"
-                                id="sku"
-                                name="sku"
-                                placeholder="Ex.: FON001"
-                            >
-
-                            <small id="erroSku"></small>
-
-                        </div>
-
-
                         <!-- CATEGORIA -->
 
                         <div class="campo">
 
                             <label for="categoria">
-                                Categoria
+                                Categoria *
                             </label>
 
-                            <select id="categoria" name="categoria">
+                            <select
+                                id="categoria"
+                                name="categoria"
+                            >
 
                                 <option value="">
                                     Selecione uma categoria
                                 </option>
 
-                                <option value="eletronicos">
-                                    Eletrônicos
+                                <option value="produto">
+                                    Produto para venda
                                 </option>
 
-                                <option value="componentes">
-                                    Componentes
+                                <option value="componente">
+                                    Componente de conserto
                                 </option>
 
-                                <option value="acessorios">
-                                    Acessórios
+                                <option value="acessorio">
+                                    Acessório
                                 </option>
 
-                                <option value="outros">
-                                    Outros
+                                <option value="outro">
+                                    Outro
                                 </option>
 
                             </select>
@@ -255,12 +311,42 @@
                         </div>
 
 
+                        <!-- SKU -->
+
+                        <div class="campo">
+
+                            <label for="sku">
+
+                                SKU
+
+                                <span class="label-opcional">
+                                    opcional
+                                </span>
+
+                            </label>
+
+                            <input
+                                type="text"
+                                id="sku"
+                                name="sku"
+                                placeholder="Ex.: FON001"
+                            >
+
+                            <small class="ajuda">
+                                Componentes podem não possuir SKU.
+                            </small>
+
+                            <small id="erroSku"></small>
+
+                        </div>
+
+
                         <!-- QUANTIDADE -->
 
                         <div class="campo">
 
                             <label for="quantidade">
-                                Quantidade
+                                Quantidade *
                             </label>
 
                             <input
@@ -276,105 +362,28 @@
                         </div>
 
 
-                        <!-- CEP -->
+                        <!-- LOCALIZAÇÃO -->
 
                         <div class="campo">
 
-                            <label for="cep">
-                                CEP
-                            </label>
+                            <label for="localizacao">
 
-                            <div class="cep-wrapper">
+                                Localização
 
-                                <input
-                                    type="text"
-                                    id="cep"
-                                    name="cep"
-                                    maxlength="9"
-                                    placeholder="00000-000"
-                                >
+                                <span class="label-opcional">
+                                    opcional
+                                </span>
 
-                                <span id="cepStatus"></span>
-
-                            </div>
-
-                            <small id="erroCep"></small>
-
-                        </div>
-
-
-                        <!-- LOGRADOURO -->
-
-                        <div class="campo campo-grande">
-
-                            <label for="logradouro">
-                                Endereço
                             </label>
 
                             <input
                                 type="text"
-                                id="logradouro"
-                                name="logradouro"
-                                placeholder="Preenchido automaticamente"
-                                readonly
+                                id="localizacao"
+                                name="localizacao"
+                                placeholder="Ex.: Armário A - Prateleira 2"
                             >
 
-                        </div>
-
-
-                        <!-- BAIRRO -->
-
-                        <div class="campo">
-
-                            <label for="bairro">
-                                Bairro
-                            </label>
-
-                            <input
-                                type="text"
-                                id="bairro"
-                                name="bairro"
-                                placeholder="Preenchido automaticamente"
-                                readonly
-                            >
-
-                        </div>
-
-
-                        <!-- CIDADE -->
-
-                        <div class="campo">
-
-                            <label for="cidade">
-                                Cidade
-                            </label>
-
-                            <input
-                                type="text"
-                                id="cidade"
-                                name="cidade"
-                                placeholder="Preenchido automaticamente"
-                                readonly
-                            >
-
-                        </div>
-
-
-                        <!-- ESTADO -->
-
-                        <div class="campo">
-
-                            <label for="estado">
-                                Estado
-                            </label>
-
-                            <input
-                                type="text"
-                                id="estado"
-                                name="estado"
-                                placeholder="UF"
-                                readonly
-                            >
+                            <small id="erroLocalizacao"></small>
 
                         </div>
 
@@ -384,20 +393,57 @@
                         <div class="campo campo-total">
 
                             <label for="descricao">
+
                                 Descrição
+
+                                <span class="label-opcional">
+                                    opcional
+                                </span>
+
                             </label>
 
                             <textarea
                                 id="descricao"
                                 name="descricao"
                                 rows="4"
-                                placeholder="Adicione informações adicionais sobre o produto..."
+                                placeholder="Adicione informações sobre o item..."
                             ></textarea>
+
+                            <small id="erroDescricao"></small>
 
                         </div>
 
                     </div>
 
+
+                    <!-- SITUAÇÃO PREVISTA -->
+
+                    <div
+                        id="previsaoEstoque"
+                        class="previsao"
+                    >
+
+                        <div class="previsao-icone">
+                            ✓
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Situação do estoque
+                            </strong>
+
+                            <p id="textoPrevisao">
+                                Informe a quantidade para visualizar
+                                a situação do estoque.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- MENSAGEM -->
 
                     <div
                         id="mensagemFormulario"
@@ -405,6 +451,8 @@
                         aria-live="polite"
                     ></div>
 
+
+                    <!-- BOTÕES -->
 
                     <div class="acoes">
 
@@ -419,8 +467,13 @@
                             type="submit"
                             class="btn-principal"
                         >
-                            Cadastrar produto
-                            <span>→</span>
+
+                            Cadastrar item
+
+                            <span>
+                                →
+                            </span>
+
                         </button>
 
                     </div>
@@ -430,24 +483,39 @@
             </section>
 
 
-            <!-- ESTOQUE -->
+            <!-- =========================
+                 ESTOQUE
+            ========================== -->
 
-            <section id="estoque" class="painel estoque">
+            <section
+                id="estoque"
+                class="painel estoque"
+            >
 
                 <div class="painel-header estoque-header">
 
                     <div>
-                        <span class="tag">INVENTÁRIO</span>
 
-                        <h2>Produtos em estoque</h2>
+                        <span class="tag">
+                            INVENTÁRIO
+                        </span>
+
+                        <h2>
+                            Itens em estoque
+                        </h2>
 
                         <p>
-                            Produtos cadastrados atualmente no sistema.
+                            Produtos e componentes cadastrados
+                            atualmente.
                         </p>
+
                     </div>
 
-                    <button class="btn-filtro">
-                        Filtrar
+                    <button
+                        class="btn-filtro"
+                        type="button"
+                    >
+                        Todos os itens
                     </button>
 
                 </div>
@@ -458,7 +526,7 @@
                     <table>
 
                         <caption>
-                            Produtos cadastrados no Stock Master
+                            Lista de itens cadastrados
                         </caption>
 
                         <thead>
@@ -466,7 +534,7 @@
                             <tr>
 
                                 <th scope="col">
-                                    Produto
+                                    Item
                                 </th>
 
                                 <th scope="col">
@@ -482,6 +550,10 @@
                                 </th>
 
                                 <th scope="col">
+                                    Localização
+                                </th>
+
+                                <th scope="col">
                                     Situação
                                 </th>
 
@@ -490,12 +562,15 @@
                         </thead>
 
 
-                        <tbody>
+                        <tbody id="tabelaProdutos">
+
 
                             <tr>
 
                                 <td>
-                                    <strong>Fonte 12V</strong>
+                                    <strong>
+                                        Fonte 12V
+                                    </strong>
                                 </td>
 
                                 <td>
@@ -507,13 +582,21 @@
                                 </td>
 
                                 <td>
-                                    <strong>15</strong>
+                                    <strong>
+                                        15
+                                    </strong>
                                 </td>
 
                                 <td>
+                                    Armário A
+                                </td>
+
+                                <td>
+
                                     <span class="badge disponivel">
                                         Disponível
                                     </span>
+
                                 </td>
 
                             </tr>
@@ -522,7 +605,46 @@
                             <tr>
 
                                 <td>
-                                    <strong>Mouse USB</strong>
+                                    <strong>
+                                        Tela LCD Samsung A14
+                                    </strong>
+                                </td>
+
+                                <td>
+                                    —
+                                </td>
+
+                                <td>
+                                    Componente de conserto
+                                </td>
+
+                                <td>
+                                    <strong>
+                                        3
+                                    </strong>
+                                </td>
+
+                                <td>
+                                    Gaveta 04
+                                </td>
+
+                                <td>
+
+                                    <span class="badge baixo">
+                                        Estoque baixo
+                                    </span>
+
+                                </td>
+
+                            </tr>
+
+
+                            <tr>
+
+                                <td>
+                                    <strong>
+                                        Mouse USB
+                                    </strong>
                                 </td>
 
                                 <td>
@@ -530,17 +652,25 @@
                                 </td>
 
                                 <td>
-                                    Acessórios
+                                    Produto para venda
                                 </td>
 
                                 <td>
-                                    <strong>8</strong>
+                                    <strong>
+                                        8
+                                    </strong>
                                 </td>
 
                                 <td>
+                                    Prateleira B
+                                </td>
+
+                                <td>
+
                                     <span class="badge disponivel">
                                         Disponível
                                     </span>
+
                                 </td>
 
                             </tr>
@@ -549,7 +679,9 @@
                             <tr>
 
                                 <td>
-                                    <strong>Teclado USB</strong>
+                                    <strong>
+                                        Teclado USB
+                                    </strong>
                                 </td>
 
                                 <td>
@@ -557,47 +689,29 @@
                                 </td>
 
                                 <td>
-                                    Acessórios
+                                    Produto para venda
                                 </td>
 
                                 <td>
-                                    <strong>12</strong>
+                                    <strong>
+                                        0
+                                    </strong>
                                 </td>
 
                                 <td>
-                                    <span class="badge disponivel">
-                                        Disponível
+                                    Prateleira B
+                                </td>
+
+                                <td>
+
+                                    <span class="badge sem-estoque">
+                                        Sem estoque
                                     </span>
+
                                 </td>
 
                             </tr>
 
-
-                            <tr>
-
-                                <td>
-                                    <strong>Cabo HDMI</strong>
-                                </td>
-
-                                <td>
-                                    CAB001
-                                </td>
-
-                                <td>
-                                    Eletrônicos
-                                </td>
-
-                                <td>
-                                    <strong>3</strong>
-                                </td>
-
-                                <td>
-                                    <span class="badge baixo">
-                                        Estoque baixo
-                                    </span>
-                                </td>
-
-                            </tr>
 
                         </tbody>
 
@@ -607,6 +721,8 @@
 
             </section>
 
+
+            <!-- RODAPÉ -->
 
             <footer class="rodape">
 

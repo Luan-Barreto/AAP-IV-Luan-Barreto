@@ -1,42 +1,81 @@
 // =====================================================
 // STOCK MASTER
-// JavaScript - Validação e consulta de CEP
+// JavaScript - Controle do estoque
 // =====================================================
 
 
+// =====================================================
 // ELEMENTOS DO DOM
+// =====================================================
 
-const formulario = document.getElementById("formProduto");
+const formulario =
+    document.getElementById("formProduto");
 
-const nome = document.getElementById("nome");
-const sku = document.getElementById("sku");
-const categoria = document.getElementById("categoria");
-const quantidade = document.getElementById("quantidade");
-const cep = document.getElementById("cep");
+const nome =
+    document.getElementById("nome");
 
-const logradouro = document.getElementById("logradouro");
-const bairro = document.getElementById("bairro");
-const cidade = document.getElementById("cidade");
-const estado = document.getElementById("estado");
+const categoria =
+    document.getElementById("categoria");
+
+const sku =
+    document.getElementById("sku");
+
+const quantidade =
+    document.getElementById("quantidade");
+
+const localizacao =
+    document.getElementById("localizacao");
+
+const descricao =
+    document.getElementById("descricao");
+
+const tabelaProdutos =
+    document.getElementById("tabelaProdutos");
 
 const mensagemFormulario =
     document.getElementById("mensagemFormulario");
 
-const cepStatus =
-    document.getElementById("cepStatus");
+const textoPrevisao =
+    document.getElementById("textoPrevisao");
+
+const previsao =
+    document.getElementById("previsaoEstoque");
 
 
 // =====================================================
-// LIMPAR ERROS
+// ELEMENTOS DO RESUMO
+// =====================================================
+
+const totalProdutos =
+    document.getElementById("totalProdutos");
+
+const produtosDisponiveis =
+    document.getElementById("produtosDisponiveis");
+
+const produtosBaixos =
+    document.getElementById("produtosBaixos");
+
+const produtosSemEstoque =
+    document.getElementById("produtosSemEstoque");
+
+
+// =====================================================
+// FUNÇÃO PARA LIMPAR ERROS
 // =====================================================
 
 function limparErros() {
 
     document.getElementById("erroNome").textContent = "";
-    document.getElementById("erroSku").textContent = "";
+
     document.getElementById("erroCategoria").textContent = "";
+
+    document.getElementById("erroSku").textContent = "";
+
     document.getElementById("erroQuantidade").textContent = "";
-    document.getElementById("erroCep").textContent = "";
+
+    document.getElementById("erroLocalizacao").textContent = "";
+
+    document.getElementById("erroDescricao").textContent = "";
 
     mensagemFormulario.textContent = "";
 
@@ -45,7 +84,7 @@ function limparErros() {
 
 
 // =====================================================
-// MOSTRAR ERRO
+// FUNÇÃO PARA MOSTRAR ERRO
 // =====================================================
 
 function mostrarErro(campo, mensagem) {
@@ -58,7 +97,7 @@ function mostrarErro(campo, mensagem) {
 
 
 // =====================================================
-// VALIDAÇÃO
+// VALIDAÇÃO DO FORMULÁRIO
 // =====================================================
 
 function validarFormulario() {
@@ -68,13 +107,15 @@ function validarFormulario() {
     limparErros();
 
 
+    // -------------------------------------------------
     // NOME
+    // -------------------------------------------------
 
     if (nome.value.trim() === "") {
 
         mostrarErro(
             "Nome",
-            "Informe o nome do produto."
+            "Informe o nome do item."
         );
 
         valido = false;
@@ -93,32 +134,9 @@ function validarFormulario() {
     }
 
 
-    // SKU
-
-    if (sku.value.trim() === "") {
-
-        mostrarErro(
-            "Sku",
-            "Informe o SKU do produto."
-        );
-
-        valido = false;
-
-    }
-
-    else if (sku.value.trim().length < 3) {
-
-        mostrarErro(
-            "Sku",
-            "O SKU deve possuir pelo menos 3 caracteres."
-        );
-
-        valido = false;
-
-    }
-
-
+    // -------------------------------------------------
     // CATEGORIA
+    // -------------------------------------------------
 
     if (categoria.value === "") {
 
@@ -132,7 +150,35 @@ function validarFormulario() {
     }
 
 
+    // -------------------------------------------------
+    // SKU
+    // -------------------------------------------------
+
+    /*
+        O SKU NÃO é obrigatório.
+
+        Isso permite cadastrar componentes
+        que não possuem código SKU.
+    */
+
+    if (
+        sku.value.trim() !== "" &&
+        sku.value.trim().length < 3
+    ) {
+
+        mostrarErro(
+            "Sku",
+            "O SKU deve possuir pelo menos 3 caracteres."
+        );
+
+        valido = false;
+
+    }
+
+
+    // -------------------------------------------------
     // QUANTIDADE
+    // -------------------------------------------------
 
     if (quantidade.value === "") {
 
@@ -145,28 +191,13 @@ function validarFormulario() {
 
     }
 
-    else if (Number(quantidade.value) < 0) {
+    else if (
+        Number(quantidade.value) < 0
+    ) {
 
         mostrarErro(
             "Quantidade",
             "A quantidade não pode ser negativa."
-        );
-
-        valido = false;
-
-    }
-
-
-    // CEP
-
-    const cepNumeros =
-        cep.value.replace(/\D/g, "");
-
-    if (cepNumeros.length !== 8) {
-
-        mostrarErro(
-            "Cep",
-            "Informe um CEP válido."
         );
 
         valido = false;
@@ -180,153 +211,223 @@ function validarFormulario() {
 
 
 // =====================================================
-// FORMATAÇÃO DO CEP
+// DETERMINAR SITUAÇÃO DO ESTOQUE
 // =====================================================
 
-cep.addEventListener("input", function () {
+function determinarSituacao(valor) {
 
-    let valor =
-        cep.value.replace(/\D/g, "");
-
-    if (valor.length > 8) {
-
-        valor =
-            valor.substring(0, 8);
-
-    }
-
-    if (valor.length > 5) {
-
-        valor =
-            valor.substring(0, 5)
-            + "-"
-            + valor.substring(5);
-
-    }
-
-    cep.value = valor;
-
-});
+    const quantidadeProduto =
+        Number(valor);
 
 
-// =====================================================
-// CONSULTA ASSÍNCRONA DO CEP
-// =====================================================
+    if (quantidadeProduto === 0) {
 
-cep.addEventListener("blur", async function () {
-
-    const cepNumeros =
-        cep.value.replace(/\D/g, "");
-
-
-    if (cepNumeros.length !== 8) {
-
-        return;
+        return {
+            nome: "Sem estoque",
+            classe: "sem-estoque"
+        };
 
     }
 
 
-    // Mostra carregamento
+    if (quantidadeProduto <= 5) {
 
-    cepStatus.textContent = "Buscando...";
+        return {
+            nome: "Estoque baixo",
+            classe: "baixo"
+        };
 
-    cepStatus.style.color = "#2563eb";
-
-
-    // Limpa endereço anterior
-
-    logradouro.value = "";
-    bairro.value = "";
-    cidade.value = "";
-    estado.value = "";
+    }
 
 
-    try {
+    return {
+        nome: "Disponível",
+        classe: "disponivel"
+    };
 
-        const resposta = await fetch(
-            `https://viacep.com.br/ws/${cepNumeros}/json/`
-        );
-
-
-        if (!resposta.ok) {
-
-            throw new Error(
-                "Erro na consulta."
-            );
-
-        }
+}
 
 
-        const dados =
-            await resposta.json();
+// =====================================================
+// ATUALIZAÇÃO DA PREVISÃO
+// =====================================================
 
+quantidade.addEventListener(
+    "input",
+    function () {
 
-        // CEP inexistente
+        if (quantidade.value === "") {
 
-        if (dados.erro) {
-
-            mostrarErro(
-                "Cep",
-                "CEP não encontrado."
-            );
-
-            cepStatus.textContent = "✕";
-
-            cepStatus.style.color = "#dc2626";
+            textoPrevisao.textContent =
+                "Informe a quantidade para visualizar a situação do estoque.";
 
             return;
 
         }
 
 
-        // Preenchimento automático
-
-        logradouro.value =
-            dados.logradouro || "";
-
-        bairro.value =
-            dados.bairro || "";
-
-        cidade.value =
-            dados.localidade || "";
-
-        estado.value =
-            dados.uf || "";
+        const situacao =
+            determinarSituacao(
+                quantidade.value
+            );
 
 
-        // Sucesso
-
-        cepStatus.textContent =
-            "✓ Encontrado";
-
-        cepStatus.style.color =
-            "#16a34a";
-
-
-        document.getElementById(
-            "erroCep"
-        ).textContent = "";
-
+        textoPrevisao.textContent =
+            "Este item será classificado como: "
+            + situacao.nome
+            + ".";
 
     }
+);
 
-    catch (erro) {
 
-        mostrarErro(
-            "Cep",
-            "Não foi possível consultar o CEP."
+// =====================================================
+// CADASTRO DINÂMICO NA TABELA
+// =====================================================
+
+function adicionarProdutoNaTabela() {
+
+    const situacao =
+        determinarSituacao(
+            quantidade.value
         );
 
-        cepStatus.textContent = "✕";
 
-        cepStatus.style.color =
-            "#dc2626";
+    const novaLinha =
+        document.createElement("tr");
 
-        console.error(erro);
 
-    }
+    novaLinha.innerHTML = `
 
-});
+        <td>
+            <strong>
+                ${nome.value.trim()}
+            </strong>
+        </td>
+
+        <td>
+            ${
+                sku.value.trim() === ""
+                    ? "—"
+                    : sku.value.trim()
+            }
+        </td>
+
+        <td>
+            ${categoria.options[categoria.selectedIndex].text}
+        </td>
+
+        <td>
+            <strong>
+                ${quantidade.value}
+            </strong>
+        </td>
+
+        <td>
+            ${
+                localizacao.value.trim() === ""
+                    ? "—"
+                    : localizacao.value.trim()
+            }
+        </td>
+
+        <td>
+            <span class="badge ${situacao.classe}">
+                ${situacao.nome}
+            </span>
+        </td>
+
+    `;
+
+
+    tabelaProdutos.prepend(
+        novaLinha
+    );
+
+}
+
+
+// =====================================================
+// ATUALIZAÇÃO DOS CARDS
+// =====================================================
+
+function atualizarResumo() {
+
+    const linhas =
+        tabelaProdutos.querySelectorAll("tr");
+
+
+    let disponiveis = 0;
+
+    let baixos = 0;
+
+    let semEstoque = 0;
+
+
+    linhas.forEach(
+        function (linha) {
+
+            const badge =
+                linha.querySelector(".badge");
+
+
+            if (!badge) {
+                return;
+            }
+
+
+            if (
+                badge.classList.contains(
+                    "disponivel"
+                )
+            ) {
+
+                disponiveis++;
+
+            }
+
+
+            if (
+                badge.classList.contains(
+                    "baixo"
+                )
+            ) {
+
+                baixos++;
+
+            }
+
+
+            if (
+                badge.classList.contains(
+                    "sem-estoque"
+                )
+            ) {
+
+                semEstoque++;
+
+            }
+
+        }
+    );
+
+
+    totalProdutos.textContent =
+        linhas.length;
+
+
+    produtosDisponiveis.textContent =
+        disponiveis;
+
+
+    produtosBaixos.textContent =
+        baixos;
+
+
+    produtosSemEstoque.textContent =
+        semEstoque;
+
+}
 
 
 // =====================================================
@@ -337,12 +438,12 @@ formulario.addEventListener(
     "submit",
     function (evento) {
 
-        // Impede recarregamento
+        // Impede o recarregamento da página
 
         evento.preventDefault();
 
 
-        // Valida
+        // Executa a validação
 
         const valido =
             validarFormulario();
@@ -351,71 +452,87 @@ formulario.addEventListener(
         if (!valido) {
 
             mensagemFormulario.textContent =
-                "Verifique os campos destacados.";
+                "Verifique os campos destacados antes de continuar.";
 
             return;
 
         }
 
 
-        // Sucesso
+        // Adiciona o item à tabela
+
+        adicionarProdutoNaTabela();
+
+
+        // Atualiza os indicadores
+
+        atualizarResumo();
+
+
+        // Mensagem de sucesso
 
         mensagemFormulario.textContent =
-            "✓ Produto validado com sucesso!";
+            "✓ Item cadastrado com sucesso!";
 
         mensagemFormulario.classList.add(
             "sucesso"
         );
 
 
-        // Exibe os dados no console
+        // Limpa os campos
 
-        console.log({
+        formulario.reset();
 
-            nome: nome.value,
 
-            sku: sku.value,
+        textoPrevisao.textContent =
+            "Informe a quantidade para visualizar a situação do estoque.";
 
-            categoria: categoria.value,
 
-            quantidade: quantidade.value,
+        // Remove a mensagem depois de alguns segundos
 
-            cep: cep.value,
+        setTimeout(
+            function () {
 
-            endereco: logradouro.value,
+                mensagemFormulario.textContent = "";
 
-            bairro: bairro.value,
+                mensagemFormulario.classList.remove(
+                    "sucesso"
+                );
 
-            cidade: cidade.value,
-
-            estado: estado.value
-
-        });
+            },
+            4000
+        );
 
     }
 );
 
 
 // =====================================================
-// BOTÃO LIMPAR
+// BOTÃO RESET
 // =====================================================
 
 formulario.addEventListener(
     "reset",
     function () {
 
-        setTimeout(function () {
+        setTimeout(
+            function () {
 
-            limparErros();
+                limparErros();
 
-            cepStatus.textContent = "";
+                textoPrevisao.textContent =
+                    "Informe a quantidade para visualizar a situação do estoque.";
 
-            logradouro.value = "";
-            bairro.value = "";
-            cidade.value = "";
-            estado.value = "";
-
-        }, 10);
+            },
+            10
+        );
 
     }
 );
+
+
+// =====================================================
+// ATUALIZA RESUMO INICIAL
+// =====================================================
+
+atualizarResumo();

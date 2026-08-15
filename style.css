@@ -17,10 +17,14 @@
 
     --azul: #2563eb;
     --azul-escuro: #1d4ed8;
+
     --fundo: #f5f7fb;
+
     --branco: #ffffff;
+
     --texto: #172033;
     --texto-secundario: #6b7280;
+
     --borda: #e5e7eb;
 
     --verde: #16a34a;
@@ -95,8 +99,6 @@ body {
 }
 
 
-/* LOGO */
-
 .logo {
 
     display: flex;
@@ -150,8 +152,6 @@ body {
 
 }
 
-
-/* MENU */
 
 .menu {
 
@@ -259,8 +259,6 @@ body {
 }
 
 
-/* TOPO */
-
 .topo {
 
     display: flex;
@@ -355,7 +353,7 @@ body {
 
 
 /* =====================================================
-   CARDS
+   CARDS DE RESUMO
    ===================================================== */
 
 .resumo {
@@ -573,13 +571,7 @@ body {
 }
 
 
-.campo-grande {
-
-    grid-column: span 2;
-
-}
-
-
+.campo-grande,
 .campo-total {
 
     grid-column: span 2;
@@ -594,6 +586,19 @@ body {
     font-weight: bold;
 
     margin-bottom: 7px;
+
+}
+
+
+.label-opcional {
+
+    color: #9ca3af;
+
+    font-weight: normal;
+
+    font-size: 11px;
+
+    margin-left: 5px;
 
 }
 
@@ -645,15 +650,6 @@ textarea:focus {
 }
 
 
-input[readonly] {
-
-    background: #f9fafb;
-
-    color: #6b7280;
-
-}
-
-
 textarea {
 
     resize: vertical;
@@ -661,35 +657,18 @@ textarea {
 }
 
 
-/* CEP */
+.ajuda {
 
-.cep-wrapper {
+    color: #9ca3af;
 
-    position: relative;
+    font-size: 11px;
 
-}
-
-
-#cepStatus {
-
-    position: absolute;
-
-    right: 12px;
-
-    top: 50%;
-
-    transform: translateY(-50%);
-
-    font-size: 12px;
-
-    color: var(--verde);
+    margin-top: 4px;
 
 }
 
 
-/* ERROS */
-
-.campo small {
+.campo small:not(.ajuda) {
 
     min-height: 18px;
 
@@ -701,6 +680,76 @@ textarea {
 
 }
 
+
+/* =====================================================
+   PREVISÃO DO ESTOQUE
+   ===================================================== */
+
+.previsao {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 13px;
+
+    padding: 15px;
+
+    border-radius: 10px;
+
+    background: #f8fafc;
+
+    border: 1px solid var(--borda);
+
+    margin-top: 25px;
+
+}
+
+
+.previsao-icone {
+
+    width: 35px;
+
+    height: 35px;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: #dbeafe;
+
+    color: var(--azul);
+
+    font-weight: bold;
+
+}
+
+
+.previsao strong {
+
+    display: block;
+
+    font-size: 13px;
+
+}
+
+
+.previsao p {
+
+    color: var(--texto-secundario);
+
+    font-size: 12px;
+
+}
+
+
+/* =====================================================
+   MENSAGEM
+   ===================================================== */
 
 .mensagem-formulario {
 
@@ -849,8 +898,6 @@ table {
 
 caption {
 
-    text-align: left;
-
     position: absolute;
 
     width: 1px;
@@ -899,7 +946,9 @@ tbody tr:hover {
 }
 
 
-/* BADGES */
+/* =====================================================
+   BADGES
+   ===================================================== */
 
 .badge {
 
@@ -930,6 +979,15 @@ tbody tr:hover {
     background: #fef3c7;
 
     color: #b45309;
+
+}
+
+
+.sem-estoque {
+
+    background: #fee2e2;
+
+    color: #b91c1c;
 
 }
 
@@ -990,7 +1048,6 @@ tbody tr:hover {
 
 
     .logo > div:last-child,
-    .menu-item:not(.ativo)::after,
     .sidebar-footer {
 
         display: none;
