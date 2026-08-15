@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Stock Master</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="layout">
+
+        <!-- MENU LATERAL -->
+
+        <aside class="sidebar">
+
+            <div class="logo">
+                <div class="logo-icon">S</div>
+
+                <div>
+                    <strong>Stock</strong>
+                    <span>Master</span>
+                </div>
+            </div>
+
+            <nav class="menu" aria-label="Menu principal">
+
+                <a href="#inicio" class="menu-item ativo">
+                    <span>⌂</span>
+                    Dashboard
+                </a>
+
+                <a href="#cadastro" class="menu-item">
+                    <span>＋</span>
+                    Novo produto
+                </a>
+
+                <a href="#estoque" class="menu-item">
+                    <span>▣</span>
+                    Estoque
+                </a>
+
+                <a href="#movimentacoes" class="menu-item">
+                    <span>↕</span>
+                    Movimentações
+                </a>
+
+            </nav>
+
+            <div class="sidebar-footer">
+                <span class="status"></span>
+                Sistema online
+            </div>
+
+        </aside>
+
+
+        <!-- CONTEÚDO -->
+
+        <main class="conteudo" id="inicio">
+
+            <!-- TOPO -->
+
+            <header class="topo">
+
+                <div>
+                    <p class="saudacao">Olá, administrador 👋</p>
+
+                    <h1>Controle de estoque</h1>
+
+                    <p class="subtitulo">
+                        Gerencie os produtos da sua assistência técnica.
+                    </p>
+                </div>
+
+                <div class="usuario">
+                    <div class="avatar">AD</div>
+
+                    <div>
+                        <strong>Administrador</strong>
+                        <span>Acesso completo</span>
+                    </div>
+                </div>
+
+            </header>
+
+
+            <!-- CARDS -->
+
+            <section class="resumo" aria-label="Resumo do estoque">
+
+                <article class="resumo-card">
+
+                    <div class="icone azul">
+                        ▣
+                    </div>
+
+                    <div>
+                        <span>Total de produtos</span>
+                        <strong>35</strong>
+                    </div>
+
+                </article>
+
+
+                <article class="resumo-card">
+
+                    <div class="icone verde">
+                        ✓
+                    </div>
+
+                    <div>
+                        <span>Em estoque</span>
+                        <strong>28</strong>
+                    </div>
+
+                </article>
+
+
+                <article class="resumo-card">
+
+                    <div class="icone amarelo">
+                        !
+                    </div>
+
+                    <div>
+                        <span>Estoque baixo</span>
+                        <strong>5</strong>
+                    </div>
+
+                </article>
+
+
+                <article class="resumo-card">
+
+                    <div class="icone vermelho">
+                        ×
+                    </div>
+
+                    <div>
+                        <span>Sem estoque</span>
+                        <strong>2</strong>
+                    </div>
+
+                </article>
+
+            </section>
+
+
+            <!-- CADASTRO -->
+
+            <section id="cadastro" class="painel">
+
+                <div class="painel-header">
+
+                    <div>
+                        <span class="tag">CADASTRO</span>
+
+                        <h2>Novo produto</h2>
+
+                        <p>
+                            Preencha as informações para cadastrar um novo produto.
+                        </p>
+                    </div>
+
+                    <div class="numero-etapa">
+                        01
+                    </div>
+
+                </div>
+
+
+                <form id="formProduto" novalidate>
+
+                    <div class="form-grid">
+
+                        <!-- NOME -->
+
+                        <div class="campo campo-grande">
+
+                            <label for="nome">
+                                Nome do produto
+                            </label>
+
+                            <input
+                                type="text"
+                                id="nome"
+                                name="nome"
+                                placeholder="Ex.: Fonte de alimentação 12V"
+                            >
+
+                            <small id="erroNome"></small>
+
+                        </div>
+
+
+                        <!-- SKU -->
+
+                        <div class="campo">
+
+                            <label for="sku">
+                                SKU
+                            </label>
+
+                            <input
+                                type="text"
+                                id="sku"
+                                name="sku"
+                                placeholder="Ex.: FON001"
+                            >
+
+                            <small id="erroSku"></small>
+
+                        </div>
+
+
+                        <!-- CATEGORIA -->
+
+                        <div class="campo">
+
+                            <label for="categoria">
+                                Categoria
+                            </label>
+
+                            <select id="categoria" name="categoria">
+
+                                <option value="">
+                                    Selecione uma categoria
+                                </option>
+
+                                <option value="eletronicos">
+                                    Eletrônicos
+                                </option>
+
+                                <option value="componentes">
+                                    Componentes
+                                </option>
+
+                                <option value="acessorios">
+                                    Acessórios
+                                </option>
+
+                                <option value="outros">
+                                    Outros
+                                </option>
+
+                            </select>
+
+                            <small id="erroCategoria"></small>
+
+                        </div>
+
+
+                        <!-- QUANTIDADE -->
+
+                        <div class="campo">
+
+                            <label for="quantidade">
+                                Quantidade
+                            </label>
+
+                            <input
+                                type="number"
+                                id="quantidade"
+                                name="quantidade"
+                                min="0"
+                                placeholder="0"
+                            >
+
+                            <small id="erroQuantidade"></small>
+
+                        </div>
+
+
+                        <!-- CEP -->
+
+                        <div class="campo">
+
+                            <label for="cep">
+                                CEP
+                            </label>
+
+                            <div class="cep-wrapper">
+
+                                <input
+                                    type="text"
+                                    id="cep"
+                                    name="cep"
+                                    maxlength="9"
+                                    placeholder="00000-000"
+                                >
+
+                                <span id="cepStatus"></span>
+
+                            </div>
+
+                            <small id="erroCep"></small>
+
+                        </div>
+
+
+                        <!-- LOGRADOURO -->
+
+                        <div class="campo campo-grande">
+
+                            <label for="logradouro">
+                                Endereço
+                            </label>
+
+                            <input
+                                type="text"
+                                id="logradouro"
+                                name="logradouro"
+                                placeholder="Preenchido automaticamente"
+                                readonly
+                            >
+
+                        </div>
+
+
+                        <!-- BAIRRO -->
+
+                        <div class="campo">
+
+                            <label for="bairro">
+                                Bairro
+                            </label>
+
+                            <input
+                                type="text"
+                                id="bairro"
+                                name="bairro"
+                                placeholder="Preenchido automaticamente"
+                                readonly
+                            >
+
+                        </div>
+
+
+                        <!-- CIDADE -->
+
+                        <div class="campo">
+
+                            <label for="cidade">
+                                Cidade
+                            </label>
+
+                            <input
+                                type="text"
+                                id="cidade"
+                                name="cidade"
+                                placeholder="Preenchido automaticamente"
+                                readonly
+                            >
+
+                        </div>
+
+
+                        <!-- ESTADO -->
+
+                        <div class="campo">
+
+                            <label for="estado">
+                                Estado
+                            </label>
+
+                            <input
+                                type="text"
+                                id="estado"
+                                name="estado"
+                                placeholder="UF"
+                                readonly
+                            >
+
+                        </div>
+
+
+                        <!-- DESCRIÇÃO -->
+
+                        <div class="campo campo-total">
+
+                            <label for="descricao">
+                                Descrição
+                            </label>
+
+                            <textarea
+                                id="descricao"
+                                name="descricao"
+                                rows="4"
+                                placeholder="Adicione informações adicionais sobre o produto..."
+                            ></textarea>
+
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        id="mensagemFormulario"
+                        class="mensagem-formulario"
+                        aria-live="polite"
+                    ></div>
+
+
+                    <div class="acoes">
+
+                        <button
+                            type="reset"
+                            class="btn-secundario"
+                        >
+                            Limpar
+                        </button>
+
+                        <button
+                            type="submit"
+                            class="btn-principal"
+                        >
+                            Cadastrar produto
+                            <span>→</span>
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </section>
+
+
+            <!-- ESTOQUE -->
+
+            <section id="estoque" class="painel estoque">
+
+                <div class="painel-header estoque-header">
+
+                    <div>
+                        <span class="tag">INVENTÁRIO</span>
+
+                        <h2>Produtos em estoque</h2>
+
+                        <p>
+                            Produtos cadastrados atualmente no sistema.
+                        </p>
+                    </div>
+
+                    <button class="btn-filtro">
+                        Filtrar
+                    </button>
+
+                </div>
+
+
+                <div class="tabela-wrapper">
+
+                    <table>
+
+                        <caption>
+                            Produtos cadastrados no Stock Master
+                        </caption>
+
+                        <thead>
+
+                            <tr>
+
+                                <th scope="col">
+                                    Produto
+                                </th>
+
+                                <th scope="col">
+                                    SKU
+                                </th>
+
+                                <th scope="col">
+                                    Categoria
+                                </th>
+
+                                <th scope="col">
+                                    Quantidade
+                                </th>
+
+                                <th scope="col">
+                                    Situação
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody>
+
+                            <tr>
+
+                                <td>
+                                    <strong>Fonte 12V</strong>
+                                </td>
+
+                                <td>
+                                    FON001
+                                </td>
+
+                                <td>
+                                    Componentes
+                                </td>
+
+                                <td>
+                                    <strong>15</strong>
+                                </td>
+
+                                <td>
+                                    <span class="badge disponivel">
+                                        Disponível
+                                    </span>
+                                </td>
+
+                            </tr>
+
+
+                            <tr>
+
+                                <td>
+                                    <strong>Mouse USB</strong>
+                                </td>
+
+                                <td>
+                                    MOU001
+                                </td>
+
+                                <td>
+                                    Acessórios
+                                </td>
+
+                                <td>
+                                    <strong>8</strong>
+                                </td>
+
+                                <td>
+                                    <span class="badge disponivel">
+                                        Disponível
+                                    </span>
+                                </td>
+
+                            </tr>
+
+
+                            <tr>
+
+                                <td>
+                                    <strong>Teclado USB</strong>
+                                </td>
+
+                                <td>
+                                    TEC001
+                                </td>
+
+                                <td>
+                                    Acessórios
+                                </td>
+
+                                <td>
+                                    <strong>12</strong>
+                                </td>
+
+                                <td>
+                                    <span class="badge disponivel">
+                                        Disponível
+                                    </span>
+                                </td>
+
+                            </tr>
+
+
+                            <tr>
+
+                                <td>
+                                    <strong>Cabo HDMI</strong>
+                                </td>
+
+                                <td>
+                                    CAB001
+                                </td>
+
+                                <td>
+                                    Eletrônicos
+                                </td>
+
+                                <td>
+                                    <strong>3</strong>
+                                </td>
+
+                                <td>
+                                    <span class="badge baixo">
+                                        Estoque baixo
+                                    </span>
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
+
+
+            <footer class="rodape">
+
+                <span>
+                    Stock Master
+                </span>
+
+                <span>
+                    Sistema de Controle de Estoque • 2026
+                </span>
+
+            </footer>
+
+        </main>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

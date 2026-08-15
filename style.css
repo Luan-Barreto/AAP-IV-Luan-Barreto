@@ -1,0 +1,1100 @@
+/* =====================================================
+   STOCK MASTER
+   CSS - Interface do sistema
+   ===================================================== */
+
+
+/* RESET */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+:root {
+
+    --azul: #2563eb;
+    --azul-escuro: #1d4ed8;
+    --fundo: #f5f7fb;
+    --branco: #ffffff;
+    --texto: #172033;
+    --texto-secundario: #6b7280;
+    --borda: #e5e7eb;
+
+    --verde: #16a34a;
+    --amarelo: #d97706;
+    --vermelho: #dc2626;
+
+}
+
+
+body {
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    background: var(--fundo);
+
+    color: var(--texto);
+
+    line-height: 1.5;
+
+}
+
+
+/* =====================================================
+   LAYOUT
+   ===================================================== */
+
+.layout {
+
+    display: flex;
+
+    min-height: 100vh;
+
+}
+
+
+/* =====================================================
+   SIDEBAR
+   ===================================================== */
+
+.sidebar {
+
+    width: 250px;
+
+    min-height: 100vh;
+
+    background:
+        linear-gradient(
+            180deg,
+            #111827 0%,
+            #172033 100%
+        );
+
+    color: white;
+
+    padding: 28px 18px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    position: fixed;
+
+    left: 0;
+
+    top: 0;
+
+    bottom: 0;
+
+}
+
+
+/* LOGO */
+
+.logo {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 0 10px 35px;
+
+}
+
+
+.logo-icon {
+
+    width: 42px;
+
+    height: 42px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 12px;
+
+    background: var(--azul);
+
+    font-size: 22px;
+
+    font-weight: bold;
+
+}
+
+
+.logo strong {
+
+    display: block;
+
+    font-size: 18px;
+
+}
+
+
+.logo span {
+
+    color: #9ca3af;
+
+    font-size: 13px;
+
+}
+
+
+/* MENU */
+
+.menu {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+
+}
+
+
+.menu-item {
+
+    color: #9ca3af;
+
+    text-decoration: none;
+
+    padding: 13px 15px;
+
+    border-radius: 10px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 13px;
+
+    transition: 0.2s;
+
+}
+
+
+.menu-item span {
+
+    font-size: 20px;
+
+    width: 22px;
+
+    text-align: center;
+
+}
+
+
+.menu-item:hover {
+
+    background: rgba(255,255,255,0.07);
+
+    color: white;
+
+}
+
+
+.menu-item.ativo {
+
+    background: var(--azul);
+
+    color: white;
+
+}
+
+
+.sidebar-footer {
+
+    margin-top: auto;
+
+    color: #9ca3af;
+
+    font-size: 13px;
+
+    padding: 15px;
+
+}
+
+
+.status {
+
+    display: inline-block;
+
+    width: 8px;
+
+    height: 8px;
+
+    border-radius: 50%;
+
+    background: #22c55e;
+
+    margin-right: 7px;
+
+}
+
+
+/* =====================================================
+   CONTEÚDO
+   ===================================================== */
+
+.conteudo {
+
+    width: calc(100% - 250px);
+
+    margin-left: 250px;
+
+    padding: 40px 5%;
+
+}
+
+
+/* TOPO */
+
+.topo {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 35px;
+
+}
+
+
+.saudacao {
+
+    color: var(--azul);
+
+    font-size: 14px;
+
+    font-weight: bold;
+
+    margin-bottom: 5px;
+
+}
+
+
+.topo h1 {
+
+    font-size: 32px;
+
+    margin-bottom: 4px;
+
+}
+
+
+.subtitulo {
+
+    color: var(--texto-secundario);
+
+}
+
+
+.usuario {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+}
+
+
+.avatar {
+
+    width: 45px;
+
+    height: 45px;
+
+    border-radius: 50%;
+
+    background: #dbeafe;
+
+    color: var(--azul);
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    font-weight: bold;
+
+}
+
+
+.usuario strong,
+.usuario span {
+
+    display: block;
+
+}
+
+
+.usuario span {
+
+    color: var(--texto-secundario);
+
+    font-size: 12px;
+
+}
+
+
+/* =====================================================
+   CARDS
+   ===================================================== */
+
+.resumo {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 18px;
+
+    margin-bottom: 28px;
+
+}
+
+
+.resumo-card {
+
+    background: white;
+
+    border: 1px solid var(--borda);
+
+    border-radius: 14px;
+
+    padding: 20px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    box-shadow:
+        0 2px 8px rgba(0,0,0,0.03);
+
+}
+
+
+.icone {
+
+    width: 45px;
+
+    height: 45px;
+
+    border-radius: 12px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    font-size: 20px;
+
+    font-weight: bold;
+
+}
+
+
+.icone.azul {
+
+    background: #dbeafe;
+
+    color: var(--azul);
+
+}
+
+
+.icone.verde {
+
+    background: #dcfce7;
+
+    color: var(--verde);
+
+}
+
+
+.icone.amarelo {
+
+    background: #fef3c7;
+
+    color: var(--amarelo);
+
+}
+
+
+.icone.vermelho {
+
+    background: #fee2e2;
+
+    color: var(--vermelho);
+
+}
+
+
+.resumo-card span {
+
+    display: block;
+
+    color: var(--texto-secundario);
+
+    font-size: 13px;
+
+}
+
+
+.resumo-card strong {
+
+    display: block;
+
+    font-size: 24px;
+
+}
+
+
+/* =====================================================
+   PAINÉIS
+   ===================================================== */
+
+.painel {
+
+    background: white;
+
+    border: 1px solid var(--borda);
+
+    border-radius: 16px;
+
+    padding: 30px;
+
+    margin-bottom: 28px;
+
+    box-shadow:
+        0 3px 12px rgba(0,0,0,0.03);
+
+}
+
+
+.painel-header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: flex-start;
+
+    margin-bottom: 30px;
+
+}
+
+
+.tag {
+
+    font-size: 11px;
+
+    font-weight: bold;
+
+    color: var(--azul);
+
+    letter-spacing: 1px;
+
+}
+
+
+.painel-header h2 {
+
+    font-size: 22px;
+
+    margin: 4px 0;
+
+}
+
+
+.painel-header p {
+
+    color: var(--texto-secundario);
+
+    font-size: 14px;
+
+}
+
+
+.numero-etapa {
+
+    font-size: 36px;
+
+    font-weight: bold;
+
+    color: #e5e7eb;
+
+}
+
+
+/* =====================================================
+   FORMULÁRIO
+   ===================================================== */
+
+.form-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 20px;
+
+}
+
+
+.campo {
+
+    display: flex;
+
+    flex-direction: column;
+
+}
+
+
+.campo-grande {
+
+    grid-column: span 2;
+
+}
+
+
+.campo-total {
+
+    grid-column: span 2;
+
+}
+
+
+.campo label {
+
+    font-size: 13px;
+
+    font-weight: bold;
+
+    margin-bottom: 7px;
+
+}
+
+
+input,
+select,
+textarea {
+
+    width: 100%;
+
+    border: 1px solid #d1d5db;
+
+    border-radius: 9px;
+
+    padding: 12px 14px;
+
+    font-family: inherit;
+
+    font-size: 14px;
+
+    color: var(--texto);
+
+    background: white;
+
+    transition: 0.2s;
+
+}
+
+
+input::placeholder,
+textarea::placeholder {
+
+    color: #9ca3af;
+
+}
+
+
+input:focus,
+select:focus,
+textarea:focus {
+
+    outline: none;
+
+    border-color: var(--azul);
+
+    box-shadow:
+        0 0 0 3px rgba(37,99,235,0.12);
+
+}
+
+
+input[readonly] {
+
+    background: #f9fafb;
+
+    color: #6b7280;
+
+}
+
+
+textarea {
+
+    resize: vertical;
+
+}
+
+
+/* CEP */
+
+.cep-wrapper {
+
+    position: relative;
+
+}
+
+
+#cepStatus {
+
+    position: absolute;
+
+    right: 12px;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    font-size: 12px;
+
+    color: var(--verde);
+
+}
+
+
+/* ERROS */
+
+.campo small {
+
+    min-height: 18px;
+
+    margin-top: 4px;
+
+    color: var(--vermelho);
+
+    font-size: 12px;
+
+}
+
+
+.mensagem-formulario {
+
+    font-size: 14px;
+
+    font-weight: bold;
+
+    margin-top: 15px;
+
+}
+
+
+.mensagem-formulario.sucesso {
+
+    color: var(--verde);
+
+}
+
+
+/* =====================================================
+   BOTÕES
+   ===================================================== */
+
+.acoes {
+
+    display: flex;
+
+    justify-content: flex-end;
+
+    gap: 12px;
+
+    margin-top: 20px;
+
+    padding-top: 20px;
+
+    border-top: 1px solid var(--borda);
+
+}
+
+
+button {
+
+    border: none;
+
+    cursor: pointer;
+
+    font-family: inherit;
+
+    font-weight: bold;
+
+    border-radius: 9px;
+
+    transition: 0.2s;
+
+}
+
+
+.btn-principal {
+
+    background: var(--azul);
+
+    color: white;
+
+    padding: 13px 22px;
+
+}
+
+
+.btn-principal:hover {
+
+    background: var(--azul-escuro);
+
+    transform: translateY(-1px);
+
+}
+
+
+.btn-principal span {
+
+    margin-left: 8px;
+
+    font-size: 18px;
+
+}
+
+
+.btn-secundario {
+
+    background: #f3f4f6;
+
+    color: #4b5563;
+
+    padding: 13px 22px;
+
+}
+
+
+.btn-secundario:hover {
+
+    background: #e5e7eb;
+
+}
+
+
+.btn-filtro {
+
+    background: white;
+
+    border: 1px solid var(--borda);
+
+    padding: 10px 18px;
+
+    color: #4b5563;
+
+}
+
+
+/* =====================================================
+   TABELA
+   ===================================================== */
+
+.estoque-header {
+
+    margin-bottom: 20px;
+
+}
+
+
+.tabela-wrapper {
+
+    width: 100%;
+
+    overflow-x: auto;
+
+}
+
+
+table {
+
+    width: 100%;
+
+    border-collapse: collapse;
+
+}
+
+
+caption {
+
+    text-align: left;
+
+    position: absolute;
+
+    width: 1px;
+
+    height: 1px;
+
+    overflow: hidden;
+
+}
+
+
+th {
+
+    text-align: left;
+
+    color: #6b7280;
+
+    font-size: 12px;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.5px;
+
+    padding: 13px;
+
+    border-bottom: 1px solid var(--borda);
+
+}
+
+
+td {
+
+    padding: 16px 13px;
+
+    border-bottom: 1px solid #f0f0f0;
+
+    font-size: 14px;
+
+}
+
+
+tbody tr:hover {
+
+    background: #f8fafc;
+
+}
+
+
+/* BADGES */
+
+.badge {
+
+    display: inline-block;
+
+    padding: 5px 10px;
+
+    border-radius: 20px;
+
+    font-size: 11px;
+
+    font-weight: bold;
+
+}
+
+
+.disponivel {
+
+    background: #dcfce7;
+
+    color: #15803d;
+
+}
+
+
+.baixo {
+
+    background: #fef3c7;
+
+    color: #b45309;
+
+}
+
+
+/* =====================================================
+   RODAPÉ
+   ===================================================== */
+
+.rodape {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    color: #9ca3af;
+
+    font-size: 12px;
+
+    padding: 10px 5px 20px;
+
+}
+
+
+/* =====================================================
+   RESPONSIVIDADE
+   ===================================================== */
+
+@media (max-width: 1100px) {
+
+    .resumo {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+    }
+
+}
+
+
+@media (max-width: 800px) {
+
+    .sidebar {
+
+        width: 70px;
+
+        padding: 20px 10px;
+
+    }
+
+
+    .logo {
+
+        justify-content: center;
+
+        padding: 0 0 30px;
+
+    }
+
+
+    .logo > div:last-child,
+    .menu-item:not(.ativo)::after,
+    .sidebar-footer {
+
+        display: none;
+
+    }
+
+
+    .menu-item {
+
+        justify-content: center;
+
+    }
+
+
+    .menu-item span {
+
+        margin: 0;
+
+    }
+
+
+    .conteudo {
+
+        width: calc(100% - 70px);
+
+        margin-left: 70px;
+
+        padding: 30px 20px;
+
+    }
+
+}
+
+
+@media (max-width: 650px) {
+
+    .topo {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 20px;
+
+    }
+
+
+    .usuario {
+
+        display: none;
+
+    }
+
+
+    .resumo {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .form-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .campo-grande,
+    .campo-total {
+
+        grid-column: span 1;
+
+    }
+
+
+    .painel {
+
+        padding: 20px;
+
+    }
+
+
+    .acoes {
+
+        flex-direction: column-reverse;
+
+    }
+
+
+    .btn-principal,
+    .btn-secundario {
+
+        width: 100%;
+
+    }
+
+
+    .rodape {
+
+        flex-direction: column;
+
+        gap: 5px;
+
+    }
+
+}
